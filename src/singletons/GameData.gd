@@ -7,21 +7,30 @@ var tower_data = {
 		"rof": .5,
 		"range": 500,
 		"cost": 2,
-		"ammo": "Arrow"
+		"ammo": "Arrow",
+		"effect": ""
 		},
 	"Catapult1": {
 		"damage": 2,
 		"rof": 1,
 		"range": 800,
 		"cost": 5,
-		"ammo": "Fireball"
+		"ammo": "Fireball",
+		"effect": ""
 	},
 		"IceTower1": {
 		"damage": 1,
 		"rof": 1.5,
 		"range": 400,
-		"cost": 3,
-		"ammo": "IceShard"
+		"cost": 5,
+		"ammo": "IceShard",
+		"effect": "Frozen"
+	}
+}
+
+var status_data = {
+	"Frozen": {
+		"duration": 0.7
 	}
 }
 

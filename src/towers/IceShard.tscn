@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/towers/IceShard.gd" type="Script" id=1]
 [ext_resource path="res://assets/towers/weapons/Ice_shard.png" type="Texture" id=2]
+[ext_resource path="res://src/towers/HitBox.gd" type="Script" id=3]
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
@@ -10,6 +11,9 @@ animations = [ {
 "name": "default",
 "speed": 12.0
 } ]
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 46.0109
 
 [sub_resource type="CapsuleShape2D" id=6]
 height = 28.0
@@ -21,8 +25,21 @@ script = ExtResource( 1 )
 rotation = 1.5708
 frames = SubResource( 5 )
 
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+rotation = 1.5708
+shape = SubResource( 7 )
+disabled = true
+
 [node name="ImpactDetector" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 2
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ImpactDetector"]
 rotation = 1.5708

@@ -1,11 +1,11 @@
 extends Bullet
 
-
-
-
-
 func _on_ImpactDetector_area_entered(area: Area2D) -> void:
-	var new_spot = load("res://src/towers/IceSpot.tscn").instance()
-	new_spot.position = Vector2(area.get_parent().get_parent().position.x, area.get_parent().get_parent().position.y)
-	get_tree().get_root().get_node("World").add_child(new_spot, true)
+	hitbox.set_disabled(false)
+	get_tree().create_timer(0.1).connect("timeout", self, "_disable_hitbox")
+	sprite.visible = false
+	yield(get_tree().create_timer(0.1), "timeout")
 	self.queue_free()
+	
+func _disable_hitbox():
+	hitbox.set_disabled(true)
