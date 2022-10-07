@@ -58,7 +58,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if get_tree().get_root().get_node_or_null("StartScene") != null:
 		return
 
-
 	if event.is_action_released("ui_cancel") and build_mode == true:
 		cancel_build_mode()
 	if event.is_action_released("ui_accept") and build_mode == true and GameData.gold > 0:
@@ -68,6 +67,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 func initiate_build_mode(tower_type: String) -> void:
 	if build_mode:
+		build_mode = false
+		if build_valid:
+			verify_and_build()
+			cancel_build_mode()
+			return
 		cancel_build_mode()
 	build_type = tower_type + "1"
 	build_mode = true
