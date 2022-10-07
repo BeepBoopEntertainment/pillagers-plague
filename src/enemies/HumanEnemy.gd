@@ -1,15 +1,18 @@
 extends PathFollow2D
 
-signal add_money
 
 
 var prev_pos: Vector2
 var timer_started: bool = false
 var health: int = 3
 
-var _speed: float = 150
+var _speed: float = 150.0
+const _max_speed: float = 150.0
 var direction = "north"
 var in_castle: bool = false
+var status: Dictionary
+onready var color = self.modulate
+
 
 onready var health_bar = get_node("HealthBar")
 
@@ -18,6 +21,7 @@ func _physics_process(delta: float) -> void:
 		self.queue_free()
 		
 	if health > 0:
+		status_check()
 		move(delta)
 
 func move(delta: float) -> void:
@@ -60,7 +64,7 @@ func _on_AnimatedSprite_animation_finished() -> void:
 			$AnimatedTimer.visible = true
 			$AnimatedTimer.frame = 0
 			$AnimatedTimer.play()
-			yield(get_tree().create_timer(3), "timeout")
+			yield(get_tree().create_timer(3.0), "timeout")
 			var zombie = load("res://src/enemies/Zombie.tscn").instance()
 			zombie.direction = direction
 			zombie.offset = offset
@@ -69,15 +73,26 @@ func _on_AnimatedSprite_animation_finished() -> void:
 			
 			
 
-func on_hit(damage: int) -> void:
+func on_hit(damage: int, effect: String = "None") -> void:
 	health = health - damage
 	health_bar.value = health
 	if health <= 0:
 		_speed = 0
+		$KinematicBody2D/HitBox.set_deferred("visible", false)
+		$KinematicBody2D/HitBox/CollisionShape2D.set_deferred("disabled", true)
 		$KinematicBody2D/AnimatedSprite.animation = "human_death"
-		emit_signal("add_money")
-		$KinematicBody2D/Area2D/CollisionShape2D.set_deferred("disabled", true)
-		$KinematicBody2D/Area2D.set_deferred("visible", false)
+	if effect != "None":
+		status[effect] = true
+		var status_timer = self.get_node_or_null(effect + "_Timer")
+		if !status_timer:
+			status_timer = Timer.new()
+			status_timer.one_shot = true
+			status_timer.set_name(effect + "_Timer")
+			status_timer.connect("timeout", self, "_status_expire", [effect])
+			add_child(status_timer, true)
+		status_timer.start(GameData.status_data[effect].duration)
+
+
 
 
 
@@ -85,6 +100,18 @@ func _on_CollisionShape2D_child_entered_tree(node):
 	pass # Replace with function body.
 
 
-func _on_HumanEnemy_add_money() -> void:
-	GameData.gold += 1
-	get_tree().get_root().get_node("World").update_label(GameData.gold, "Gold")
+func status_check():
+	if  "Frozen" in status.keys() && status["Frozen"]:
+		if _speed == _max_speed:
+			_speed = _speed * 0.5
+			self.modulate = Color("69a2ff")
+			
+func undo_status(effect: String):
+	if effect == "Frozen":
+		_speed = _max_speed
+		self.modulate = Color(color)
+		
+
+func _status_expire(effect: String):
+	undo_status(effect)
+	status[effect] = false

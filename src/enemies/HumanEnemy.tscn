@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://src/timer/Timer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/enemies/human_death.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/enemies/walking_east.png" type="Texture" id=5]
 [ext_resource path="res://assets/enemies/PC Computer - CrossCode - Hit Numbers Unused.png" type="Texture" id=6]
 [ext_resource path="res://assets/enemies/human_walking_north.png" type="Texture" id=7]
+[ext_resource path="res://src/enemies/HurtBox.gd" type="Script" id=8]
 [ext_resource path="res://assets/enemies/hpbar.png" type="Texture" id=10]
 [ext_resource path="res://src/enemies/HumanEnemy.gd" type="Script" id=11]
 
@@ -271,6 +272,10 @@ animations = [ {
 [sub_resource type="CapsuleShape2D" id=55]
 radius = 17.0
 
+[sub_resource type="CapsuleShape2D" id=151]
+radius = 16.0
+height = 24.0
+
 [sub_resource type="AtlasTexture" id=103]
 flags = 4
 atlas = ExtResource( 6 )
@@ -289,7 +294,7 @@ region = Rect2( 0, 112, 8, 16 )
 [sub_resource type="SpriteFrames" id=106]
 animations = [ {
 "frames": [ SubResource( 103 ), SubResource( 104 ), SubResource( 105 ) ],
-"loop": true,
+"loop": false,
 "name": "count_down",
 "speed": 1.0
 } ]
@@ -308,16 +313,25 @@ wait_time = 3.0
 [node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
 frames = SubResource( 9 )
 animation = "human_death"
-frame = 7
+frame = 10
 playing = true
 
 [node name="Position2D" type="Position2D" parent="KinematicBody2D/AnimatedSprite"]
 
-[node name="Area2D" type="Area2D" parent="KinematicBody2D"]
+[node name="HitBox" type="Area2D" parent="KinematicBody2D"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/HitBox"]
 shape = SubResource( 55 )
+
+[node name="HurtBox" type="Area2D" parent="KinematicBody2D"]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/HurtBox"]
+shape = SubResource( 151 )
 
 [node name="HealthBar" type="TextureProgress" parent="."]
 margin_left = -30.0
@@ -336,10 +350,10 @@ position = Vector2( 24, -16 )
 scale = Vector2( 0.749999, 1 )
 frames = SubResource( 106 )
 animation = "count_down"
+frame = 2
 playing = true
 
-[connection signal="add_money" from="." to="." method="_on_HumanEnemy_add_money"]
 [connection signal="timeout" from="KinematicBody2D/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="animation_finished" from="KinematicBody2D/AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
-[connection signal="child_entered_tree" from="KinematicBody2D/Area2D/CollisionShape2D" to="." method="_on_CollisionShape2D_child_entered_tree"]
-[connection signal="child_entered_tree" from="KinematicBody2D/Area2D/CollisionShape2D" to="." method="bullet_hit"]
+[connection signal="child_entered_tree" from="KinematicBody2D/HitBox/CollisionShape2D" to="." method="_on_CollisionShape2D_child_entered_tree"]
+[connection signal="child_entered_tree" from="KinematicBody2D/HitBox/CollisionShape2D" to="." method="bullet_hit"]

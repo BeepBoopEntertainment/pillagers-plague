@@ -4,7 +4,7 @@ var type: String
 var built: bool = false
 var enemy: Node
 var ready: bool = true
-var check_for_enemies: bool = false 
+# var check_for_enemies: bool = false 
 
 func _ready():
 	if built:
@@ -13,7 +13,7 @@ func _ready():
 		
 func _physics_process(_delta: float) -> void:
 
-	if check_for_enemies and built:
+	if built:
 		select_enemy()
 		turn()
 		if ready:
@@ -56,9 +56,11 @@ func fire() -> void:
 	
 	
 func _on_Range_area_entered(area: Area2D) -> void:
-	check_for_enemies = true
+	# check_for_enemies = true
+	pass
 	
 	
 func _on_Range_area_exited(area: Area2D) -> void:
-	check_for_enemies = false
+	# check_for_enemies = false
+	pass
 
