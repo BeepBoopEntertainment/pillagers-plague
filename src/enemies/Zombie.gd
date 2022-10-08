@@ -12,8 +12,6 @@ var in_castle: bool = false
 var status: Dictionary
 
 onready var color = self.modulate
-
-
 onready var health_bar = get_node("HealthBar")
 
 func _physics_process(delta: float) -> void:
@@ -57,8 +55,6 @@ func _ready() -> void:
 	prev_pos.x = position.x
 	prev_pos.y = position.y
 
-
-	
 	
 # handle animations finishing
 func _on_AnimatedSprite_animation_finished() -> void:
@@ -68,6 +64,7 @@ func _on_AnimatedSprite_animation_finished() -> void:
 			emit_signal("add_money")
 			var world: Node = get_tree().get_root().get_node("World")
 			world.enemies_in_wave = world.enemies_in_wave - 1
+			world.update_label(world.enemies_in_wave, "Creeps")
 			self.queue_free()
 		"revive":
 			_speed = 100

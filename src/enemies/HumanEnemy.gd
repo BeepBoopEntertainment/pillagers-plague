@@ -1,7 +1,6 @@
 extends PathFollow2D
 
 
-
 var prev_pos: Vector2
 var timer_started: bool = false
 var health: int = 3
@@ -93,25 +92,18 @@ func on_hit(damage: int, effect: String = "None") -> void:
 		status_timer.start(GameData.status_data[effect].duration)
 
 
-
-
-
-func _on_CollisionShape2D_child_entered_tree(node):
-	pass # Replace with function body.
-
-
-func status_check():
+func status_check() -> void:
 	if  "Frozen" in status.keys() && status["Frozen"]:
 		if _speed == _max_speed:
 			_speed = _speed * 0.5
 			self.modulate = Color("69a2ff")
 			
-func undo_status(effect: String):
+func undo_status(effect: String) -> void:
 	if effect == "Frozen":
 		_speed = _max_speed
 		self.modulate = Color(color)
 		
 
-func _status_expire(effect: String):
+func _status_expire(effect: String) -> void:
 	undo_status(effect)
 	status[effect] = false

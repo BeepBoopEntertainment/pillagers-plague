@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 #	pass
-func _on_ImpactDetector_area_entered(area: Area2D) -> void:
+func _on_ImpactDetector_area_entered(_area: Area2D) -> void:
 	# this needs to actually find the correct enemy that owns the area2d passed in
 	#if is_instance_valid(enemy):
 	#	enemy.on_hit(GameData.tower_data[tower_type]["damage"])
