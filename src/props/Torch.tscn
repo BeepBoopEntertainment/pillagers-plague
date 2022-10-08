@@ -37,9 +37,13 @@ animations = [ {
 position = Vector2( 16, 16 )
 texture = ExtResource( 2 )
 energy = 0.5
+range_height = 10.0
+range_layer_max = 10
+shadow_enabled = true
 
 [node name="Flicker" type="AnimatedSprite" parent="."]
 position = Vector2( 16, 16 )
 frames = SubResource( 5 )
 animation = "Flicker"
+frame = 3
 playing = true
