@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/treeGreen_large.png-733429a887369a4c5bd721f28045bdb8.stex"
+path="res://.import/Torch_bloom2.png-9abc3688e2da67e75afd99f6629e110a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/props/treeGreen_large.png"
-dest_files=[ "res://.import/treeGreen_large.png-733429a887369a4c5bd721f28045bdb8.stex" ]
+source_file="res://assets/Torch_bloom2.png"
+dest_files=[ "res://.import/Torch_bloom2.png-9abc3688e2da67e75afd99f6629e110a.stex" ]
 
 [params]
 

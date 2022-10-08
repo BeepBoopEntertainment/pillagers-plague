@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/crateMetal.png-8d8113fcc52aab7ce44ff4fd4750112d.stex"
+path="res://.import/Light.png-984a7fcf9b9fa8b8afe1b777ede7a8c2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/props/crateMetal.png"
-dest_files=[ "res://.import/crateMetal.png-8d8113fcc52aab7ce44ff4fd4750112d.stex" ]
+source_file="res://assets/props/Light.png"
+dest_files=[ "res://.import/Light.png-984a7fcf9b9fa8b8afe1b777ede7a8c2.stex" ]
 
 [params]
 

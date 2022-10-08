@@ -1,8 +1,5 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=26 format=2]
 
-[ext_resource path="res://assets/props/treeGreen_large.png" type="Texture" id=1]
-[ext_resource path="res://assets/props/treeBrown_large.png" type="Texture" id=2]
-[ext_resource path="res://assets/base/terrainTiles_default.png" type="Texture" id=3]
 [ext_resource path="res://assets/ui/themes/montreal.tres" type="Theme" id=4]
 [ext_resource path="res://assets/base/terrainTiles_Custom.png" type="Texture" id=5]
 [ext_resource path="res://assets/towers/weapons/Ice_top.png" type="Texture" id=6]
@@ -20,9 +17,13 @@
 [ext_resource path="res://assets/props/Hill1_with_graves.png" type="Texture" id=18]
 [ext_resource path="res://assets/towers/weapons/Catapult_unloaded_idle.png" type="Texture" id=19]
 
+[sub_resource type="StreamTexture" id=8]
+flags = 4
+load_path = "res://.import/terrainTiles_default.png-749a84446a1f27df546cf5879174dd57.stex"
+
 [sub_resource type="TileSet" id=1]
 0/name = "terrainTiles_default.png 0"
-0/texture = ExtResource( 3 )
+0/texture = SubResource( 8 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 32, 64 )
@@ -157,80 +158,6 @@
 8/z_index = 0
 
 [sub_resource type="TileSet" id=2]
-0/name = "terrainTiles_default.png 0"
-0/texture = ExtResource( 3 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 416, 64, 32, 32 )
-0/tile_mode = 1
-0/autotile/bitmask_mode = 0
-0/autotile/bitmask_flags = [  ]
-0/autotile/icon_coordinate = Vector2( 0, 0 )
-0/autotile/tile_size = Vector2( 32, 32 )
-0/autotile/spacing = 0
-0/autotile/occluder_map = [  ]
-0/autotile/navpoly_map = [  ]
-0/autotile/priority_map = [  ]
-0/autotile/z_index_map = [  ]
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape_one_way = false
-0/shape_one_way_margin = 0.0
-0/shapes = [  ]
-0/z_index = 0
-1/name = "terrainTiles_default.png 1"
-1/texture = ExtResource( 3 )
-1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 64, 128, 384, 128 )
-1/tile_mode = 1
-1/autotile/bitmask_mode = 1
-1/autotile/bitmask_flags = [ Vector2( 0, 0 ), 146, Vector2( 1, 0 ), 56, Vector2( 1, 1 ), 186, Vector2( 2, 0 ), 178, Vector2( 2, 1 ), 176, Vector2( 2, 2 ), 420, Vector2( 2, 3 ), 294, Vector2( 3, 0 ), 154, Vector2( 3, 1 ), 152, Vector2( 3, 2 ), 201, Vector2( 3, 3 ), 75, Vector2( 4, 0 ), 48, Vector2( 4, 1 ), 50, Vector2( 5, 0 ), 152, Vector2( 5, 1 ), 26 ]
-1/autotile/icon_coordinate = Vector2( 0, 0 )
-1/autotile/tile_size = Vector2( 64, 64 )
-1/autotile/spacing = 0
-1/autotile/occluder_map = [  ]
-1/autotile/navpoly_map = [  ]
-1/autotile/priority_map = [  ]
-1/autotile/z_index_map = [  ]
-1/occluder_offset = Vector2( 0, 0 )
-1/navigation_offset = Vector2( 0, 0 )
-1/shape_offset = Vector2( 0, 0 )
-1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape_one_way = false
-1/shape_one_way_margin = 0.0
-1/shapes = [  ]
-1/z_index = 0
-2/name = "treeBrown_large.png 2"
-2/texture = ExtResource( 2 )
-2/tex_offset = Vector2( 0, 0 )
-2/modulate = Color( 1, 1, 1, 1 )
-2/region = Rect2( 0, 0, 64, 64 )
-2/tile_mode = 0
-2/occluder_offset = Vector2( 0, 0 )
-2/navigation_offset = Vector2( 0, 0 )
-2/shape_offset = Vector2( 0, 0 )
-2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-2/shape_one_way = false
-2/shape_one_way_margin = 0.0
-2/shapes = [  ]
-2/z_index = 0
-3/name = "treeGreen_large.png 3"
-3/texture = ExtResource( 1 )
-3/tex_offset = Vector2( 0, 0 )
-3/modulate = Color( 1, 1, 1, 1 )
-3/region = Rect2( 0, 0, 64, 64 )
-3/tile_mode = 0
-3/occluder_offset = Vector2( 0, 0 )
-3/navigation_offset = Vector2( 0, 0 )
-3/shape_offset = Vector2( 0, 0 )
-3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-3/shape_one_way = false
-3/shape_one_way_margin = 0.0
-3/shapes = [  ]
-3/z_index = 0
 4/name = "empty.png 4"
 4/texture = ExtResource( 12 )
 4/tex_offset = Vector2( 0, 0 )
@@ -385,19 +312,6 @@
 14/shape_one_way_margin = 0.0
 14/shapes = [  ]
 14/z_index = 0
-15/name = "Hill2.png 15"
-15/tex_offset = Vector2( 0, 0 )
-15/modulate = Color( 1, 1, 1, 1 )
-15/region = Rect2( 0, 0, 64, 64 )
-15/tile_mode = 0
-15/occluder_offset = Vector2( 0, 0 )
-15/navigation_offset = Vector2( 0, 0 )
-15/shape_offset = Vector2( 0, 0 )
-15/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-15/shape_one_way = false
-15/shape_one_way_margin = 0.0
-15/shapes = [  ]
-15/z_index = 0
 16/name = "Hill.png 16"
 16/texture = ExtResource( 15 )
 16/tex_offset = Vector2( 0, 0 )
@@ -440,8 +354,78 @@
 18/shape_one_way_margin = 0.0
 18/shapes = [  ]
 18/z_index = 0
+19/name = "terrainTiles_Custom.png 19"
+19/texture = ExtResource( 5 )
+19/tex_offset = Vector2( 0, 0 )
+19/modulate = Color( 1, 1, 1, 1 )
+19/region = Rect2( 64, 0, 64, 64 )
+19/tile_mode = 0
+19/occluder_offset = Vector2( 0, 0 )
+19/navigation_offset = Vector2( 0, 0 )
+19/shape_offset = Vector2( 0, 0 )
+19/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+19/shape_one_way = false
+19/shape_one_way_margin = 0.0
+19/shapes = [  ]
+19/z_index = 0
+20/name = "terrainTiles_Custom.png 20"
+20/texture = ExtResource( 5 )
+20/tex_offset = Vector2( 0, 0 )
+20/modulate = Color( 1, 1, 1, 1 )
+20/region = Rect2( 64, 64, 64, 64 )
+20/tile_mode = 0
+20/occluder_offset = Vector2( 0, 0 )
+20/navigation_offset = Vector2( 0, 0 )
+20/shape_offset = Vector2( 0, 0 )
+20/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+20/shape_one_way = false
+20/shape_one_way_margin = 0.0
+20/shapes = [  ]
+20/z_index = 0
+21/name = "terrainTiles_Custom.png 21"
+21/texture = ExtResource( 5 )
+21/tex_offset = Vector2( 0, 0 )
+21/modulate = Color( 1, 1, 1, 1 )
+21/region = Rect2( 0, 128, 64, 64 )
+21/tile_mode = 0
+21/occluder_offset = Vector2( 0, 0 )
+21/navigation_offset = Vector2( 0, 0 )
+21/shape_offset = Vector2( 0, 0 )
+21/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+21/shape_one_way = false
+21/shape_one_way_margin = 0.0
+21/shapes = [  ]
+21/z_index = 0
+22/name = "terrainTiles_Custom.png 22"
+22/texture = ExtResource( 5 )
+22/tex_offset = Vector2( 0, 0 )
+22/modulate = Color( 1, 1, 1, 1 )
+22/region = Rect2( 64, 128, 64, 64 )
+22/tile_mode = 0
+22/occluder_offset = Vector2( 0, 0 )
+22/navigation_offset = Vector2( 0, 0 )
+22/shape_offset = Vector2( 0, 0 )
+22/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+22/shape_one_way = false
+22/shape_one_way_margin = 0.0
+22/shapes = [  ]
+22/z_index = 0
+23/name = "terrainTiles_Custom.png 23"
+23/texture = ExtResource( 5 )
+23/tex_offset = Vector2( 0, 0 )
+23/modulate = Color( 1, 1, 1, 1 )
+23/region = Rect2( 128, 0, 64, 64 )
+23/tile_mode = 0
+23/occluder_offset = Vector2( 0, 0 )
+23/navigation_offset = Vector2( 0, 0 )
+23/shape_offset = Vector2( 0, 0 )
+23/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+23/shape_one_way = false
+23/shape_one_way_margin = 0.0
+23/shapes = [  ]
+23/z_index = 0
 
-[sub_resource type="Curve2D" id=8]
+[sub_resource type="Curve2D" id=11]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 1388, 87, 0, 0, 0, 0, 1208, 88, 0, 0, 0, 0, 1184, 104, 0, 0, 0, 0, 1184, 144, 0, 0, 0, 0, 1184, 248, 0, 0, 0, 0, 1160, 272, 0, 0, 0, 0, 760, 272, 0, 0, 0, 0, 736, 304, 0, 0, 0, 0, 736, 376, 0, 0, 0, 0, 720, 400, 0, 0, 0, 0, 688, 400, 0, 0, 0, 0, 672, 384, 0, 0, 0, 0, 672, 360, 0, 0, 0, 0, 648, 336, 0, 0, 0, 0, 240, 336, 0, 0, 0, 0, 200, 272, 0, 0, 0, 0, -96, 272 )
 }
@@ -483,7 +467,7 @@ __meta__ = {
 [node name="TowerExclusion" type="TileMap" parent="GameMap"]
 tile_set = SubResource( 2 )
 format = 1
-tile_data = PoolIntArray( -65524, 5, 0, 12, 5, 0, 65537, 16, 0, 65538, 17, 0, 65541, 17, 0, 65544, 16, 0, 65545, 16, 0, 65548, 5, 0, 65549, 18, 0, 65554, 9, 0, 65555, 6, 0, 65556, 6, 0, 65557, 6, 0, 131079, 15, 0, 131080, 16, 0, 131081, 4, 0, 131084, 5, 0, 131090, 5, 0, 196616, 4, 0, 196617, 4, 0, 196620, 5, 0, 196622, 14, 0, 196624, 17, 0, 196626, 5, 0, 327678, 6, 0, 327679, 6, 0, 262144, 6, 0, 262145, 6, 0, 262146, 6, 0, 262147, 7, 0, 262148, 12, 0, 262150, 18, 0, 262152, 4, 0, 262154, 12, 0, 262155, 9, 0, 262156, 6, 0, 262157, 6, 0, 262158, 6, 0, 262159, 6, 0, 262160, 6, 0, 262161, 6, 0, 262162, 10, 0, 327683, 8, 0, 327684, 6, 0, 327685, 6, 0, 327686, 6, 0, 327687, 6, 0, 327688, 6, 0, 327689, 6, 0, 327690, 7, 0, 327691, 5, 0, 327692, 13, 0, 393217, 12, 0, 393219, 17, 0, 393220, 5, 0, 393221, 14, 0, 393224, 4, 0, 393226, 8, 0, 393227, 10, 0, 393228, 18, 0, 393231, 9, 0, 393232, 6, 0, 393233, 6, 0, 393234, 6, 0, 393235, 7, 0, 458756, 8, 0, 458757, 6, 0, 458758, 6, 0, 458759, 6, 0, 458760, 7, 0, 458767, 5, 0, 458769, 18, 0, 458771, 5, 0, 524288, 18, 0, 524296, 5, 0, 524297, 17, 0, 524301, 16, 0, 524303, 5, 0, 524307, 5, 0, 589825, 16, 0, 589829, 18, 0, 589832, 8, 0, 589833, 6, 0, 589834, 6, 0, 589835, 6, 0, 589836, 6, 0, 589837, 6, 0, 589838, 6, 0, 589839, 10, 0, 589842, 16, 0, 589843, 8, 0, 589844, 6, 0, 589845, 6, 0, 655368, 4, 0, 655369, 4, 0, 655370, 4, 0, 655371, 4, 0, 655374, 17, 0, 655377, 16, 0, 720906, 17, 0, 720907, 4, 0, 786443, 4, 0, 851979, 4, 0, 917515, 5, 0 )
+tile_data = PoolIntArray( -65524, 5, 0, 12, 5, 0, 65537, 16, 0, 65538, 17, 0, 65541, 17, 0, 65544, 16, 0, 65545, 16, 0, 65548, 5, 0, 65549, 18, 0, 65554, 9, 0, 65555, 6, 0, 65556, 6, 0, 65557, 6, 0, 131079, 15, 0, 131080, 16, 0, 131081, 4, 0, 131084, 5, 0, 131090, 5, 0, 196616, 4, 0, 196617, 4, 0, 196620, 5, 0, 196622, 14, 0, 196624, 17, 0, 196626, 5, 0, 327678, 6, 0, 327679, 6, 0, 262144, 6, 0, 262145, 6, 0, 262146, 6, 0, 262147, 7, 0, 262148, 12, 0, 262150, 18, 0, 262152, 4, 0, 262154, 12, 0, 262155, 9, 0, 262156, 19, 0, 262157, 6, 0, 262158, 6, 0, 262159, 6, 0, 262160, 6, 0, 262161, 6, 0, 262162, 10, 0, 327683, 8, 0, 327684, 20, 0, 327685, 6, 0, 327686, 6, 0, 327687, 6, 0, 327688, 6, 0, 327689, 6, 0, 327690, 7, 0, 327691, 5, 0, 327692, 13, 0, 393217, 12, 0, 393219, 17, 0, 393220, 5, 0, 393221, 14, 0, 393224, 4, 0, 393226, 8, 0, 393227, 10, 0, 393228, 18, 0, 393231, 9, 0, 393232, 6, 0, 393233, 6, 0, 393234, 6, 0, 393235, 7, 0, 458756, 8, 0, 458757, 6, 0, 458758, 6, 0, 458759, 6, 0, 458760, 7, 0, 458767, 5, 0, 458769, 18, 0, 458771, 5, 0, 524288, 18, 0, 524296, 5, 0, 524297, 17, 0, 524301, 16, 0, 524303, 5, 0, 524307, 5, 0, 589825, 16, 0, 589829, 18, 0, 589832, 8, 0, 589833, 6, 0, 589834, 6, 0, 589835, 6, 0, 589836, 6, 0, 589837, 6, 0, 589838, 6, 0, 589839, 10, 0, 589842, 16, 0, 589843, 8, 0, 589844, 6, 0, 589845, 6, 0, 655368, 4, 0, 655369, 4, 0, 655370, 4, 0, 655371, 4, 0, 655374, 17, 0, 655377, 16, 0, 720906, 17, 0, 720907, 4, 0, 786443, 4, 0, 851979, 4, 0 )
 
 [node name="Turrets" type="Node2D" parent="GameMap"]
 
@@ -492,7 +476,7 @@ position = Vector2( 42, 287 )
 rotation = -1.56731
 
 [node name="Path" type="Path2D" parent="GameMap"]
-curve = SubResource( 8 )
+curve = SubResource( 11 )
 
 [node name="Path2" type="Path2D" parent="GameMap"]
 curve = SubResource( 9 )
