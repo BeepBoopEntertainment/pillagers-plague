@@ -157,7 +157,6 @@ func spawn_enemies() -> void:
 			update_label(enemies_in_wave, "Creeps")
 			var fluctuation = spawn_fluctuator.randf_range(0.2, 1.0)
 			yield(get_tree().create_timer(fluctuation), "timeout")
-		#yield(get_tree().create_timer(2), "timeout")
 	start = true
 
 	
