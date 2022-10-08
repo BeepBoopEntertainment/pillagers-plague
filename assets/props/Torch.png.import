@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/crateWood.png-aeaa3c3f8533bccaae3c65d22ea92d04.stex"
+path="res://.import/Torch.png-4fe2a33a9a8e19442021bfde3cb99d39.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/props/crateWood.png"
-dest_files=[ "res://.import/crateWood.png-aeaa3c3f8533bccaae3c65d22ea92d04.stex" ]
+source_file="res://assets/props/Torch.png"
+dest_files=[ "res://.import/Torch.png-4fe2a33a9a8e19442021bfde3cb99d39.stex" ]
 
 [params]
 

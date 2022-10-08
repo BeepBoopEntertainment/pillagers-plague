@@ -287,7 +287,6 @@ script = ExtResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
 frames = SubResource( 9 )
 animation = "zombie_walking_west"
-frame = 1
 playing = true
 
 [node name="Position2D" type="Position2D" parent="KinematicBody2D/AnimatedSprite"]
