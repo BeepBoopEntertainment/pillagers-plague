@@ -132,20 +132,29 @@ func get_paths() -> Array:
 	var is_finished: bool = false
 	var local_paths: Array = []
 	while (!is_finished):
-		var name: String = "Path"
-		if i > 1:
-			name += str(i)
-		var n = map_node.get_node_or_null(name)
-		if n == null:
+		var name: Array = get_path_name(i)
+		if !name[0]:
 			is_finished = true
 			continue
 	
-		local_paths.append(name)
+		local_paths.append(name[1])
 		i += 1
 	
 	return local_paths
+
+
+func get_path_name(i: int) -> Array:
+	var name: String = gen_name(i)
+	if map_node.get_node_or_null(name) != null:
+		return [true, name]
 		
-	
+	return [false, name]
+
+
+func gen_name(i: int) -> String:
+	return "Path" if i == 1 else "Path" + str(i)
+
+
 func spawn_enemies() -> void:
 	paths.shuffle()
 	for path_name in paths:
