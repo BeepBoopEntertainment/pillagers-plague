@@ -14,7 +14,6 @@
 
 [sub_resource type="StreamTexture" id=8]
 flags = 4
-load_path = "res://.import/terrainTiles_default.png-749a84446a1f27df546cf5879174dd57.stex"
 
 [sub_resource type="TileSet" id=1]
 0/name = "terrainTiles_default.png 0"
@@ -362,28 +361,28 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Torch" parent="GroundLayer" instance=ExtResource( 2 )]
-position = Vector2( 298, 604 )
-
-[node name="Torch2" parent="GroundLayer" instance=ExtResource( 2 )]
-position = Vector2( 377, 706 )
-
-[node name="Torch3" parent="GroundLayer" instance=ExtResource( 2 )]
-position = Vector2( 679, 637 )
-
-[node name="Torch4" parent="GroundLayer" instance=ExtResource( 2 )]
-position = Vector2( 763, 384 )
-
-[node name="Torch5" parent="GroundLayer" instance=ExtResource( 2 )]
-position = Vector2( 879, 31 )
-
-[node name="Torch6" parent="GroundLayer" instance=ExtResource( 2 )]
-position = Vector2( 1196, 130 )
-
 [node name="TowerExclusion" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
 format = 1
 tile_data = PoolIntArray( 14, 18, 0, 16, 14, 0, 65537, 19, 0, 65538, 19, 0, 65539, 13, 0, 65543, 16, 0, 65544, 19, 0, 65545, 19, 0, 65547, 11, 0, 65548, 8, 0, 65549, 8, 0, 65550, 8, 0, 65551, 8, 0, 65552, 8, 0, 65553, 8, 0, 65554, 8, 0, 65555, 8, 0, 65556, 8, 0, 65557, 8, 0, 65558, 8, 0, 131074, 13, 0, 131083, 7, 0, 196614, 18, 0, 196619, 7, 0, 196624, 15, 0, 196626, 19, 0, 196627, 13, 0, 262144, 18, 0, 262153, 18, 0, 262155, 7, 0, 262156, 14, 0, 327683, 15, 0, 327691, 7, 0, 327694, 18, 0, 393216, 14, 0, 393217, 14, 0, 393218, 14, 0, 393219, 14, 0, 393222, 19, 0, 393223, 13, 0, 393227, 7, 0, 458755, 14, 0, 458763, 7, 0, 524291, 14, 0, 524298, 11, 0, 524299, 12, 0, 524304, 19, 0, 524306, 16, 0, 589827, 14, 0, 589829, 11, 0, 589830, 8, 0, 589831, 8, 0, 589832, 8, 0, 589833, 8, 0, 589834, 12, 0, 589840, 13, 0, 655363, 14, 0, 655365, 7, 0, 655368, 14, 0, 655369, 17, 0, 655370, 19, 0, 655376, 17, 0, 655377, 13, 0, 655378, 18, 0, 655379, 18, 0, 720899, 11, 0, 720900, 8, 0, 720901, 12, 0, 720902, 18, 0, 786435, 7, 0, 851971, 7, 0 )
+
+[node name="Torch" parent="TowerExclusion" instance=ExtResource( 2 )]
+position = Vector2( 298, 604 )
+
+[node name="Torch2" parent="TowerExclusion" instance=ExtResource( 2 )]
+position = Vector2( 380, 685 )
+
+[node name="Torch3" parent="TowerExclusion" instance=ExtResource( 2 )]
+position = Vector2( 631, 629 )
+
+[node name="Torch4" parent="TowerExclusion" instance=ExtResource( 2 )]
+position = Vector2( 758, 379 )
+
+[node name="Torch5" parent="TowerExclusion" instance=ExtResource( 2 )]
+position = Vector2( 879, 31 )
+
+[node name="Torch6" parent="TowerExclusion" instance=ExtResource( 2 )]
+position = Vector2( 1196, 130 )
 
 [node name="Path" type="Path2D" parent="."]
 curve = SubResource( 5 )

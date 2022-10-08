@@ -376,22 +376,22 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Torch" parent="GameMap/GroundLayer" instance=ExtResource( 1 )]
-position = Vector2( 630, 195 )
-
-[node name="Torch2" parent="GameMap/GroundLayer" instance=ExtResource( 1 )]
-position = Vector2( 431, 274 )
-
-[node name="Torch3" parent="GameMap/GroundLayer" instance=ExtResource( 1 )]
-position = Vector2( 489, 562 )
-
-[node name="Torch4" parent="GameMap/GroundLayer" instance=ExtResource( 1 )]
-position = Vector2( 709, 610 )
-
 [node name="TowerExclusion" type="TileMap" parent="GameMap"]
 tile_set = SubResource( 2 )
 format = 1
-tile_data = PoolIntArray( -65527, 5, 0, 9, 5, 0, 65537, 16, 0, 65538, 17, 0, 65545, 5, 0, 65549, 18, 0, 131079, 15, 0, 131081, 5, 0, 196616, 9, 0, 196617, 10, 0, 196622, 14, 0, 196624, 17, 0, 262150, 18, 0, 262152, 5, 0, 327688, 5, 0, 393219, 17, 0, 393221, 14, 0, 393224, 5, 0, 393228, 18, 0, 458760, 5, 0, 458769, 18, 0, 458771, 15, 0, 524288, 18, 0, 524296, 5, 0, 524301, 16, 0, 589825, 16, 0, 589829, 18, 0, 589832, 5, 0, 589838, 17, 0, 655368, 8, 0, 655369, 6, 0, 655370, 6, 0, 655371, 7, 0, 720906, 17, 0, 720907, 5, 0, 786443, 5, 0, 851979, 5, 0, 917515, 5, 0 )
+tile_data = PoolIntArray( -65527, 5, 0, 9, 5, 0, 65537, 16, 0, 65538, 17, 0, 65545, 5, 0, 65549, 18, 0, 131079, 15, 0, 131081, 5, 0, 196616, 9, 0, 196617, 10, 0, 196622, 14, 0, 196624, 17, 0, 262150, 18, 0, 262152, 5, 0, 327688, 5, 0, 393219, 17, 0, 393221, 14, 0, 393224, 5, 0, 393228, 18, 0, 458760, 5, 0, 458769, 18, 0, 458771, 15, 0, 524288, 18, 0, 524296, 5, 0, 524301, 16, 0, 589825, 16, 0, 589829, 18, 0, 589831, 4, 0, 589832, 5, 0, 589838, 17, 0, 655368, 8, 0, 655369, 6, 0, 655370, 6, 0, 655371, 7, 0, 720906, 17, 0, 720907, 5, 0, 786443, 5, 0, 851979, 5, 0, 917515, 5, 0 )
+
+[node name="Torch" parent="GameMap/TowerExclusion" instance=ExtResource( 1 )]
+position = Vector2( 630, 195 )
+
+[node name="Torch2" parent="GameMap/TowerExclusion" instance=ExtResource( 1 )]
+position = Vector2( 431, 274 )
+
+[node name="Torch3" parent="GameMap/TowerExclusion" instance=ExtResource( 1 )]
+position = Vector2( 490, 584 )
+
+[node name="Torch4" parent="GameMap/TowerExclusion" instance=ExtResource( 1 )]
+position = Vector2( 745, 644 )
 
 [node name="Turrets" type="Node2D" parent="GameMap"]
 
