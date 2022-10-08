@@ -1,6 +1,6 @@
 extends Node2D
-
 class_name LevelHandler
+
 
 var map_node: Node
 var build_mode: bool = false
@@ -15,12 +15,14 @@ var start: bool = false
 var max_waves: int = 0
 var counters_visible: bool = false
 var spawn_fluctuator = RandomNumberGenerator.new()
+var paths: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	map_node = get_node_or_null("GameMap")
 	if map_node == null:
 		map_node = self
+	paths.append_array(get_paths())
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.connect("pressed", self, "initiate_build_mode", [i.get_name()])
 	if map_node != self:
@@ -50,8 +52,7 @@ func _process(_delta: float) -> void:
 			
 	if enemies_in_wave == 0 and start and cont:
 		start_next_wave()
-		start = false
-	
+		start = false	
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -120,22 +121,45 @@ func verify_and_build() -> void:
 func start_next_wave() -> void:
 	current_wave += 1
 	yield(get_tree().create_timer(0.2),"timeout")
-	update_label(wave_data[1], "MaxCreeps")
+	update_label(wave_data[1] * paths.size(), "MaxCreeps")
 	update_label(0, "Creeps")
 	spawn_enemies()
 	update_label(current_wave, "Wave")
 	wave_data[1] += current_wave * 2
 
+func get_paths() -> Array:
+	var i: int = 1
+	var is_finished: bool = false
+	var local_paths: Array = []
+	while (!is_finished):
+		var name: String = "Path"
+		if i > 1:
+			name += str(i)
+		var n = map_node.get_node_or_null(name)
+		if n == null:
+			is_finished = true
+			continue
+	
+		local_paths.append(name)
+		i += 1
+	
+	return local_paths
+		
 	
 func spawn_enemies() -> void:
-	for i in range(wave_data[1]):
-		var new_enemy = load("res://src/enemies/" + wave_data[0] + ".tscn").instance()
-		map_node.get_node("Path").add_child(new_enemy, true)
-		enemies_in_wave = enemies_in_wave + 1
-		var fluctuation = spawn_fluctuator.randf_range(0.2, 1.0)
-		yield(get_tree().create_timer(fluctuation),"timeout")
-		update_label(i+1, "Creeps")
+	paths.shuffle()
+	for path_name in paths:
+		for _k in range(wave_data[1]):
+			var path_node: Path2D = map_node.get_node(path_name)
+			var new_enemy = load("res://src/enemies/" + wave_data[0] + ".tscn").instance()
+			path_node.add_child(new_enemy, true)
+			enemies_in_wave = enemies_in_wave + 1
+			update_label(enemies_in_wave, "Creeps")
+			var fluctuation = spawn_fluctuator.randf_range(0.2, 1.0)
+			yield(get_tree().create_timer(fluctuation), "timeout")
+		#yield(get_tree().create_timer(2), "timeout")
 	start = true
+
 	
 func change_labels() -> void:
 	update_label(max_waves, "MaxWave")
