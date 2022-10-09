@@ -32,7 +32,8 @@ func _ready() -> void:
 		i.connect("pressed", self, "initiate_build_mode", [i.get_name()])
 	if map_node != self:
 		yield(get_tree().create_timer(2.0),"timeout")
-	start_next_wave()
+	else:
+		start_next_wave()
 
 func hide_or_unhide_build_menu() -> void:
 	if is_build_menu_minimized:

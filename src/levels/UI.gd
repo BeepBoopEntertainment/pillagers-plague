@@ -39,3 +39,24 @@ func update_tower_preview(new_position: Vector2, color: String, sufficient_funds
 		var insufficient_funds_label = Label.new()
 		insufficient_funds_label.text = "Not enough dosh!"
 		get_node("TowerPreview").add_child(insufficient_funds_label, true)
+
+
+func _on_PausePlay_pressed() -> void:
+	if get_parent().build_mode:
+		get_parent().cancel_build_mode()
+	if get_tree().is_paused():
+		get_tree().paused = false
+	elif get_parent().current_wave == 0:
+		get_parent().current_wave += 1
+		get_parent().start_next_wave()
+	else:
+		get_tree().paused = true
+
+func _on_SpeedUp_pressed() -> void:
+	if get_parent().build_mode:
+		get_parent().cancel_build_mode()
+	if Engine.get_time_scale() == 2.0:
+		Engine.set_time_scale(1.0)
+	else:
+		Engine.set_time_scale(2.0)
+
