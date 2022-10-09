@@ -50,7 +50,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Ld 51- TD"
+config/name="pillagers-plague"
 run/main_scene="res://src/start_menu/StartScene.tscn"
 config/icon="res://icon.png"
 
