@@ -1,6 +1,8 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://src/props/Torch.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/ui/fastforward.png" type="Texture" id=2]
+[ext_resource path="res://assets/ui/play.png" type="Texture" id=3]
 [ext_resource path="res://assets/ui/themes/montreal.tres" type="Theme" id=4]
 [ext_resource path="res://assets/base/terrainTiles_Custom.png" type="Texture" id=5]
 [ext_resource path="res://assets/towers/weapons/Ice_top.png" type="Texture" id=6]
@@ -17,6 +19,7 @@
 [ext_resource path="res://assets/props/Tree1.png" type="Texture" id=17]
 [ext_resource path="res://assets/props/Hill1_with_graves.png" type="Texture" id=18]
 [ext_resource path="res://assets/towers/weapons/Catapult_unloaded_idle.png" type="Texture" id=19]
+[ext_resource path="res://assets/ui/pause.png" type="Texture" id=20]
 
 [sub_resource type="StreamTexture" id=8]
 flags = 4
@@ -450,7 +453,7 @@ default_font = SubResource( 4 )
 [sub_resource type="StreamTexture" id=7]
 flags = 4
 
-[node name="World2" type="Node2D"]
+[node name="World" type="Node2D"]
 script = ExtResource( 10 )
 
 [node name="GameMap" type="Node2D" parent="."]
@@ -744,6 +747,35 @@ margin_right = 80.0
 margin_bottom = 38.0
 text = "5"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+margin_left = 1124.0
+margin_top = 643.0
+margin_right = 1268.0
+margin_bottom = 713.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PausePlay" type="TextureButton" parent="UI/HBoxContainer"]
+pause_mode = 2
+margin_right = 70.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 20 )
+expand = true
+
+[node name="SpeedUp" type="TextureButton" parent="UI/HBoxContainer"]
+margin_left = 74.0
+margin_right = 144.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+texture_normal = ExtResource( 2 )
+expand = true
+
 [node name="CastleWallTest" type="Sprite" parent="."]
 position = Vector2( 608, -32 )
 texture = SubResource( 7 )
+
+[connection signal="pressed" from="UI/HBoxContainer/PausePlay" to="UI" method="_on_PausePlay_pressed"]
+[connection signal="pressed" from="UI/HBoxContainer/SpeedUp" to="UI" method="_on_SpeedUp_pressed"]
