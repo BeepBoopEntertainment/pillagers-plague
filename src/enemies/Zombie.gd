@@ -110,6 +110,5 @@ func _on_CollisionShape2D_child_entered_tree(node):
 	pass # Replace with function body.
 
 func _status_expire(effect: String):
-	print("test")
 	undo_status(effect)
 	status[effect] = false

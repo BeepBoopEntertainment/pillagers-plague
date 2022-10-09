@@ -408,17 +408,25 @@ script = ExtResource( 11 )
 margin_right = 1288.0
 margin_bottom = 728.0
 mouse_filter = 2
-__meta__ = {
-"_edit_lock_": true
-}
+
+[node name="BuildMenuHider" type="VBoxContainer" parent="UI/HUD"]
+margin_left = 19.0
+margin_top = 534.0
+margin_right = 146.0
+margin_bottom = 615.0
+
+[node name="OpenBuildMenu" type="Button" parent="UI/HUD/BuildMenuHider" groups=["build_menu_control"]]
+margin_right = 127.0
+margin_bottom = 20.0
+text = "Build Menu"
 
 [node name="BuildBar" type="VBoxContainer" parent="UI/HUD"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = -32.0
-margin_right = 96.0
-margin_bottom = 132.0
+margin_left = 17.0
+margin_top = -133.0
+margin_right = 97.0
+margin_bottom = 139.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_rotation = 270.0
@@ -520,6 +528,12 @@ margin_right = 56.0
 margin_bottom = 35.0
 rect_rotation = 90.0
 text = "1"
+
+[node name="HideBuildMenu" type="Button" parent="UI/HUD/BuildBar" groups=["build_menu_control"]]
+margin_top = 252.0
+margin_right = 80.0
+margin_bottom = 272.0
+text = "x"
 
 [node name="InfoBar" type="ColorRect" parent="UI/HUD"]
 self_modulate = Color( 0.0117647, 0, 0, 0.470588 )

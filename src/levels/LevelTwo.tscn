@@ -450,7 +450,7 @@ default_font = SubResource( 4 )
 [sub_resource type="StreamTexture" id=7]
 flags = 4
 
-[node name="World" type="Node2D"]
+[node name="World2" type="Node2D"]
 script = ExtResource( 10 )
 
 [node name="GameMap" type="Node2D" parent="."]
@@ -514,7 +514,19 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="BuildMenuHider" type="VBoxContainer" parent="UI/HUD"]
+margin_left = 22.0
+margin_top = 537.0
+margin_right = 149.0
+margin_bottom = 618.0
+
+[node name="OpenBuildMenu" type="Button" parent="UI/HUD/BuildMenuHider" groups=["build_menu_control"]]
+margin_right = 127.0
+margin_bottom = 20.0
+text = "Build Menu"
+
 [node name="BuildBar" type="VBoxContainer" parent="UI/HUD"]
+visible = false
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 16.0
@@ -622,6 +634,13 @@ margin_right = 56.0
 margin_bottom = 35.0
 rect_rotation = 90.0
 text = "1"
+
+[node name="HideBuildMenu" type="Button" parent="UI/HUD/BuildBar" groups=["build_menu_control"]]
+margin_left = 357.0
+margin_top = -13.0
+margin_right = 437.0
+margin_bottom = 7.0
+text = "x"
 
 [node name="InfoBar" type="ColorRect" parent="UI/HUD"]
 self_modulate = Color( 0.0117647, 0, 0, 0.470588 )

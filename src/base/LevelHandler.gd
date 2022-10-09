@@ -16,6 +16,9 @@ var max_waves: int = 0
 var counters_visible: bool = false
 var spawn_fluctuator = RandomNumberGenerator.new()
 var paths: Array = []
+var is_build_menu_minimized: bool = true
+onready var build_menu = $UI/HUD/BuildBar
+onready var build_menu_hider = $UI/HUD/BuildMenuHider
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,13 +26,24 @@ func _ready() -> void:
 	if map_node == null:
 		map_node = self
 	paths.append_array(get_paths())
+	for i in get_tree().get_nodes_in_group("build_menu_control"):
+		i.connect("pressed", self, "hide_or_unhide_build_menu")
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.connect("pressed", self, "initiate_build_mode", [i.get_name()])
 	if map_node != self:
 		yield(get_tree().create_timer(2.0),"timeout")
 	start_next_wave()
 
-
+func hide_or_unhide_build_menu() -> void:
+	if is_build_menu_minimized:
+		build_menu_hider.visible = false
+		build_menu.visible = true
+		is_build_menu_minimized = false
+	else:
+		build_menu_hider.visible = true
+		build_menu.visible = false
+		is_build_menu_minimized = true
+		
 func _process(_delta: float) -> void:
 	if build_mode:
 		update_tower_preview()
