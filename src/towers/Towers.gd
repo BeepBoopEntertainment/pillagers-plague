@@ -10,7 +10,7 @@ func _ready():
 	if built:
 		$Range/CollisionShape2D.get_shape().radius = 0.5 * GameData.tower_data[type].range
 
-		
+
 func _physics_process(_delta: float) -> void:
 
 	if built:
