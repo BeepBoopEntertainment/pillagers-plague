@@ -113,7 +113,7 @@ func update_tower_preview() -> void:
 func cancel_build_mode() -> void:
 	build_mode = false
 	build_valid = false
-	var TowerPreview = get_node_or_null("UI/TowerPreview")
+	var TowerPreview = get_tree().get_root().get_node_or_null("World/TowerPreview")
 	if TowerPreview:
 		TowerPreview.free()
 
