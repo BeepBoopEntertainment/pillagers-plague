@@ -30,9 +30,7 @@ func _ready() -> void:
 		i.connect("pressed", self, "hide_or_unhide_build_menu")
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.connect("pressed", self, "initiate_build_mode", [i.get_name()])
-	if map_node != self:
-		yield(get_tree().create_timer(2.0),"timeout")
-	else:
+	if map_node == self:
 		start_next_wave()
 
 func hide_or_unhide_build_menu() -> void:
@@ -83,7 +81,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 func initiate_build_mode(tower_type: String) -> void:
 	if build_mode:
-		build_mode = false
 		if build_valid:
 			verify_and_build()
 			cancel_build_mode()
@@ -116,11 +113,13 @@ func update_tower_preview() -> void:
 func cancel_build_mode() -> void:
 	build_mode = false
 	build_valid = false
-	get_node("UI/TowerPreview").queue_free()
+	var TowerPreview = get_node_or_null("UI/TowerPreview")
+	if TowerPreview:
+		TowerPreview.free()
 
 	
 func verify_and_build() -> void:
-	if build_valid:
+	if build_valid && build_mode:
 		# Check player has enough gold
 		var new_tower = load("res://src/towers/" + build_type + ".tscn").instance()
 		new_tower.position = build_location
@@ -130,6 +129,7 @@ func verify_and_build() -> void:
 		map_node.get_node("TowerExclusion").set_cellv(build_tile, 4)
 		GameData.gold -= GameData.tower_data[build_type].cost
 		update_label(GameData.gold, "Gold")
+	
 
 
 
