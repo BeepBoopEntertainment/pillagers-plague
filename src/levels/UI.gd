@@ -25,20 +25,27 @@ func set_tower_preview(tower_type: String, mouse_position: Vector2) -> void:
 	control.add_child(range_texture, true)
 	control.rect_position = mouse_position
 	control.set_name("TowerPreview")
-	add_child(control, true)
-	move_child(get_node("TowerPreview"), 0)
+	var world = get_tree().get_root().get_node_or_null("World")
+	world.add_child(control, true)
+	world.move_child(get_node("World/TowerPreview"), 0)
+	control.set_as_toplevel(true)
+	
 	
 func update_tower_preview(new_position: Vector2, color: String, sufficient_funds: bool) -> void:
-	get_node("TowerPreview").rect_position = new_position
-	if get_node("TowerPreview/DragTower").modulate != Color(color):
-		get_node("TowerPreview/DragTower").modulate = Color(color)
-		get_node("TowerPreview/Sprite").modulate = Color(color)
-	if sufficient_funds && get_node_or_null("TowerPreview/Label"):
-		get_node("TowerPreview/Label").visible = false
-	if !sufficient_funds && not get_node_or_null("TowerPreview/Label"):
+	var tower_preview = get_tree().get_root().get_node_or_null("World/TowerPreview")
+	if tower_preview:
+		tower_preview.rect_position = new_position
+	else:
+		return
+	if get_tree().get_root().get_node("World/TowerPreview/DragTower").modulate != Color(color):
+		get_tree().get_root().get_node("World/TowerPreview/DragTower").modulate = Color(color)
+		get_tree().get_root().get_node("World/TowerPreview/Sprite").modulate = Color(color)
+	if sufficient_funds && get_tree().get_root().get_node_or_null("World/TowerPreview/Label"):
+		get_tree().get_root().get_node("World/TowerPreview/Label").visible = false
+	if !sufficient_funds && not get_tree().get_root().get_node_or_null("World/TowerPreview/Label"):
 		var insufficient_funds_label = Label.new()
 		insufficient_funds_label.text = "Not enough dosh!"
-		get_node("TowerPreview").add_child(insufficient_funds_label, true)
+		get_tree().get_root().get_node("World/TowerPreview").add_child(insufficient_funds_label, true)
 
 
 func _on_PausePlay_pressed() -> void:
