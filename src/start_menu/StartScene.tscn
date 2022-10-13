@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/start_menu/StartScene.gd" type="Script" id=1]
 [ext_resource path="res://src/props/Torch.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/start_menu/Menu.gd" type="Script" id=3]
 [ext_resource path="res://assets/ui/themes/montreal.tres" type="Theme" id=4]
+[ext_resource path="res://assets/sounds/Theme.ogg" type="AudioStream" id=5]
 [ext_resource path="res://assets/props/Hill2.png" type="Texture" id=9]
 [ext_resource path="res://assets/props/Hill.png" type="Texture" id=10]
 [ext_resource path="res://assets/props/Tree2.png" type="Texture" id=11]
@@ -424,6 +425,10 @@ texture = ExtResource( 15 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 6 )
 anims/Titlecard = SubResource( 7 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
 
 [connection signal="pressed" from="Menu/VBoxContainer/StartButton" to="Menu" method="_on_StartButton_pressed"]
 [connection signal="pressed" from="Menu/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
