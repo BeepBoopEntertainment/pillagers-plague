@@ -1,32 +1,39 @@
 extends Node2D
 class_name Tower
+
+
 var type: String
 var built: bool = false
 var enemy: Node
 var ready: bool = true
-# var check_for_enemies: bool = false 
 
-func _ready():
+
+func _ready() -> void:
 	if built:
-		$Range/CollisionShape2D.get_shape().radius = 0.5 * GameData.tower_data[type].range
+		var radius: float = 0.5 * GameData.tower_data[type].range
+		$Range/CollisionShape2D.get_shape().radius = radius
 
 
 func _physics_process(_delta: float) -> void:
-
-	if built:
-		select_enemy()
-		turn()
-		if ready:
-			fire()
-	else:
+	if !built:
 		enemy = null
-	
+	else:
+		act_like_a_tower()
+
+
+func act_like_a_tower() -> void:
+	select_enemy()
+	turn()
+	if ready:
+		fire()
+
 
 func turn() -> void:
 	if is_instance_valid(enemy):
 		get_node("Turret").look_at(enemy.position)
 	else:
 		enemy = null
+
 
 func select_enemy() -> void:
 	var enemy_progress_map = {}
@@ -38,8 +45,7 @@ func select_enemy() -> void:
 		else:
 			enemy = null
 
-		
-	
+
 func fire() -> void:
 	ready = false
 	if is_instance_valid(enemy):
@@ -53,14 +59,3 @@ func fire() -> void:
 	else:
 		enemy = null
 	ready = true
-	
-	
-func _on_Range_area_entered(area: Area2D) -> void:
-	# check_for_enemies = true
-	pass
-	
-	
-func _on_Range_area_exited(area: Area2D) -> void:
-	# check_for_enemies = false
-	pass
-

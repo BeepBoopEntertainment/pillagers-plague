@@ -1,7 +1,12 @@
 extends Area2D
 
+
+var gameover_scene: String = "res://src/game_over/GameOver.tscn"
+
+
 func _ready() -> void:
 	$AnimatedSprite.frame = 5 - GameData.hp
+
 
 func _on_Castle_area_entered(enemy: Area2D) -> void:
 	$AnimationPlayer.play("castle_shake")
@@ -14,4 +19,5 @@ func _on_Castle_area_entered(enemy: Area2D) -> void:
 	enemy.get_parent().get_parent().queue_free()
 	if GameData.hp <= 0:
 		yield(get_tree().create_timer(2.0),"timeout")
-		get_tree().change_scene("res://src/game_over/GameOver.tscn")
+		if get_tree().change_scene(gameover_scene) != OK:
+			print('Game Over scene not found')
