@@ -12,7 +12,7 @@ var current_wave: int = 0
 var enemies_in_wave: int = 0
 var wave_data: Array
 var start: bool = false
-var max_waves: int = 0
+var level_max_waves: int = 0
 var counters_visible: bool = false
 var spawn_fluctuator = RandomNumberGenerator.new()
 var paths: Array = []
@@ -46,7 +46,8 @@ func hide_or_unhide_build_menu() -> void:
 
 func set_next_level(levelPath: String) -> void:
 	GameData.current_level += 1
-	get_tree().change_scene(levelPath)
+	if get_tree().change_scene(levelPath) != OK:
+		print('Could not change scenes.')
 
 
 func _process(_delta: float) -> void:
@@ -63,6 +64,8 @@ func _process(_delta: float) -> void:
 				1:
 					set_next_level("res://src/levels/LevelTwo.tscn")
 				2:
+					set_next_level("res://src/levels/LevelThree.tscn")
+				3:
 					set_next_level("res://src/game_over/YouWin.tscn")
 			return
 			
@@ -186,7 +189,7 @@ func spawn_enemies() -> void:
 
 	
 func change_labels() -> void:
-	update_label(max_waves, "MaxWave")
+	update_label(level_max_waves, "MaxWave")
 	update_label(wave_data[1], "MaxCreeps")
 	update_label(GameData.hp, "Health")
 

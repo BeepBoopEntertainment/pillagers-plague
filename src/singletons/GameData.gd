@@ -8,7 +8,8 @@ var tower_data = {
 		"range": 500,
 		"cost": 2,
 		"ammo": "Arrow",
-		"effect": ""
+		"effect": "",
+		"max_use": 15
 		},
 	"Catapult1": {
 		"damage": 2,
@@ -16,7 +17,8 @@ var tower_data = {
 		"range": 800,
 		"cost": 5,
 		"ammo": "Fireball",
-		"effect": ""
+		"effect": "",
+		"max_use": 5
 	},
 		"IceTower1": {
 		"damage": 1,
@@ -24,7 +26,8 @@ var tower_data = {
 		"range": 400,
 		"cost": 5,
 		"ammo": "IceShard",
-		"effect": "Frozen"
+		"effect": "Frozen",
+		"max_use": 10
 	}
 }
 

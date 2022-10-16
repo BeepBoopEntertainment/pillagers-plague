@@ -26,8 +26,9 @@ func set_tower_preview(tower_type: String, mouse_position: Vector2) -> void:
 	control.rect_position = mouse_position
 	control.set_name("TowerPreview")
 	var world = get_tree().get_root().get_node_or_null("World")
+	var tower = world.get_node_or_null("TowerPreview")
 	world.add_child(control, true)
-	world.move_child(get_node("World/TowerPreview"), 0)
+	world.move_child(tower, 0)
 	control.set_as_toplevel(true)
 	
 	
