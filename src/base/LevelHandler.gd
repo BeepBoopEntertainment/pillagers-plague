@@ -42,7 +42,13 @@ func hide_or_unhide_build_menu() -> void:
 		build_menu_hider.visible = true
 		build_menu.visible = false
 		is_build_menu_minimized = true
-		
+
+
+func set_next_level(levelPath: String) -> void:
+	GameData.current_level += 1
+	get_tree().change_scene(levelPath)
+
+
 func _process(_delta: float) -> void:
 	if build_mode:
 		update_tower_preview()
@@ -55,12 +61,9 @@ func _process(_delta: float) -> void:
 		else:
 			match GameData.current_level:
 				1:
-					GameData.current_level += 1
-					get_tree().change_scene("res://src/levels/LevelTwo.tscn")
+					set_next_level("res://src/levels/LevelTwo.tscn")
 				2:
-					# Show nice Win screen
-					GameData.current_level = 1
-					get_tree().change_scene("res://src/game_over/YouWin.tscn")
+					set_next_level("res://src/game_over/YouWin.tscn")
 			return
 			
 	if enemies_in_wave == 0 and start and cont:
@@ -129,8 +132,6 @@ func verify_and_build() -> void:
 		map_node.get_node("TowerExclusion").set_cellv(build_tile, 4)
 		GameData.gold -= GameData.tower_data[build_type].cost
 		update_label(GameData.gold, "Gold")
-	
-
 
 
 func start_next_wave() -> void:
@@ -188,7 +189,8 @@ func change_labels() -> void:
 	update_label(max_waves, "MaxWave")
 	update_label(wave_data[1], "MaxCreeps")
 	update_label(GameData.hp, "Health")
-		
+
+
 func update_label(num: int, label_str: String) -> void:
 	var label: Label = get_tree().get_root().get_node_or_null("World/UI/HUD/InfoBar/" + label_str)
 	if label != null:
