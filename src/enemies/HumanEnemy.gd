@@ -14,6 +14,8 @@ onready var color = self.modulate
 
 
 onready var health_bar = get_node("HealthBar")
+onready var walk_sfx = $AudioStreamPlayer2D
+
 
 func _physics_process(delta: float) -> void:
 	if in_castle:
@@ -22,6 +24,8 @@ func _physics_process(delta: float) -> void:
 	if health > 0:
 		status_check()
 		move(delta)
+
+			
 
 func move(delta: float) -> void:
 	if prev_pos.x != position.x:
@@ -42,9 +46,15 @@ func move(delta: float) -> void:
 			$KinematicBody2D/AnimatedSprite.animation = "human_walking_south"
 			direction = "south"
 		prev_pos.y = position.y
-	
+	play_sfx()
 	set_offset(get_offset() + _speed * delta )
 
+func play_sfx() -> void:
+	if walk_sfx.playing == false:
+		walk_sfx.play("res://assets/sounds/walking.wav")
+	else:
+		walk_sfx.stream.loop = false
+		walk_sfx.stop()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$AnimatedTimer.visible = false

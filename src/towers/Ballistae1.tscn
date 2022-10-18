@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/towers/tower_top_down.png" type="Texture" id=1]
 [ext_resource path="res://assets/towers/weapons/Ballistae_idle.png" type="Texture" id=2]
 [ext_resource path="res://assets/towers/weapons/Ballistae_firing.png" type="Texture" id=3]
 [ext_resource path="res://src/towers/Ballistae1.gd" type="Script" id=4]
+[ext_resource path="res://assets/sounds/regular-arrow-shot.wav" type="AudioStream" id=5]
 
 [sub_resource type="OccluderPolygon2D" id=11]
 resource_local_to_scene = true
@@ -68,6 +69,9 @@ playing = true
 
 [node name="Arrow" type="Position2D" parent="Turret"]
 position = Vector2( 22, 0 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Turret/Arrow"]
+stream = ExtResource( 5 )
 
 [node name="Range" type="Area2D" parent="."]
 position = Vector2( 32, 32 )

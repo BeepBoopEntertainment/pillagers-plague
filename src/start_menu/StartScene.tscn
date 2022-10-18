@@ -428,7 +428,7 @@ anims/Titlecard = SubResource( 7 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
-autoplay = true
+bus = "Walk"
 
 [connection signal="pressed" from="Menu/VBoxContainer/StartButton" to="Menu" method="_on_StartButton_pressed"]
 [connection signal="pressed" from="Menu/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
